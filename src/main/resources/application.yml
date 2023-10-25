@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/wookpay?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      jdbc-url: jdbc:mysql://127.0.0.1:3306/wookpay?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+#      username: root
+#      password: rootpassword
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      maximum-pool-size: 20
+#      max-lifetime: 28800
+
+  batch: #TODO
+    jdbc:
+      initialize-schema: always
+    job.name: ${job.name:NONE}
+    chunk-size: 1000
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+        format_sql: true
+    hibernate:
+      ddl-auto: create

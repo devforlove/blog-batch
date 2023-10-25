@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/wookpay?rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+#    url: jdbc:tc:mysql:8:///?&user=test&password=test&TC_INITSCRIPT=file:src/test/resources/init-batch.sql
+    hikari:
+      maximum-pool-size: 30
+      max-lifetime: 28790
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        query:
+          fail_on_pagination_over_collection_fetch: false
+#        format_sql: true
+        show_sql: true
+        default_batch_fetch_size: 1000
+
+  batch: #TODO
+    job.name: ${job.name:NONE}
+    chunk-size: 1000
